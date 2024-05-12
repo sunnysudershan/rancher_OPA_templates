@@ -1,0 +1,15 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredLabels
+metadata:
+  name: all-must-have-owner
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["pod"]
+  parameters:
+    message: "Required label missing!"
+    labels:
+    - key: security
+      allowedRegex: "^true$"
+
